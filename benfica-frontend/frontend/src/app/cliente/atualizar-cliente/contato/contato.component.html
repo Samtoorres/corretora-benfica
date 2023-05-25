@@ -1,0 +1,16 @@
+<button mat-button color="primary" [routerLink]="['/lista-cliente']" >Listar Clientes</button>
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" [(ngModel)]="contatoCliente.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Telefone Pessoal</mat-label>
+    <input matInput type="text" [(ngModel)]="contatoCliente.telefonePessoal">
+  </mat-form-field>
+
+  <button mat-button color="primary" (click)="atualizarContato()" class="buttonAtualiza">
+    {{'Atualizar Contato'}}
+  </button>
+</div>

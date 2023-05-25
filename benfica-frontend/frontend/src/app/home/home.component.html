@@ -1,0 +1,32 @@
+<div>
+  <h2>Sistema de Gerenciamento dos Dados da Benfica Corretora de Seguros</h2>
+
+  <mat-grid-list cols="2" rowHeight="2:1" style="margin: 2em;">
+
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Gerenciar Usuários</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-fab color="primary" [routerLink]="['/lista-usuario']">
+            <mat-icon color="primary">supervised_user_circle</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Gerenciar Clientes</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-fab color="primary" [routerLink]="['/lista-cliente']">
+            <mat-icon color="primary">work</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

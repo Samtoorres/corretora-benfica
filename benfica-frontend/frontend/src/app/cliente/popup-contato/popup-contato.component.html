@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Dados</h2>
+<mat-dialog-content>
+  <div *ngFor="let contato of data.contatoCliente">
+    <div>Telefone Pessoal: {{ contato.telefonePessoal }}
+      <button mat-fab color="primary" (click)="atualizarContato(contato)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div>Email: {{ contato.email }}</div>
+    <br>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Fechar</button>
+</mat-dialog-actions>

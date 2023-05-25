@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Dados</h2>
+<mat-dialog-content>
+  <div *ngFor="let objetoSeguro of data.objetoSeguro">
+    <h4>Tipo Seguro: {{ objetoSeguro.seguro.tipoSeguro.descricao }}</h4>
+      <div>Vigência: {{ objetoSeguro.seguro.vigencia }}</div>
+      <div>Valor: {{ objetoSeguro.seguro.valor }}</div>
+
+      <br>
+
+      <div *ngIf="objetoSeguro.seguro.tipoSeguro.id == 1">
+        <div>Placa: {{ objetoSeguro.placa }}</div>
+        <div>Chassi: {{ objetoSeguro.chassi }}</div>
+        <div>Modelo: {{ objetoSeguro.modelo }}</div>
+        <div>Ano: {{ objetoSeguro.ano }}</div>
+        <div>Valor Veículo: {{ objetoSeguro.valorVeiculo }}</div>
+        <div>Menor Vinte Um Dias: {{ objetoSeguro.idadeMenorVinteUmDias }}</div>
+      </div>
+
+      <br>
+
+      <div *ngIf="objetoSeguro.seguro.tipoSeguro.id == 2">
+        <div>Tipo Seguro: {{ objetoSeguro.areaTerreno }}</div>
+        <div>Valor Imóvel: {{ objetoSeguro.valorImovel }}</div>
+        <div>Inscrição: {{ objetoSeguro.inscricao }}</div>
+      </div>
+
+      <br>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Fechar</button>
+</mat-dialog-actions>
