@@ -1,0 +1,17 @@
+package com.benfica.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class AtualizarContatoDTO {
+
+    private Long id;
+    private Long telefonePessoal;
+    private String email;
+}
