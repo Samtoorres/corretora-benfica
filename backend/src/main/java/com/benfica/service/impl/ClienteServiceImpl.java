@@ -109,12 +109,8 @@ public class ClienteServiceImpl implements ClienteService {
 	public String excluir(String cpf) {
 		
 		Cliente cliente = buscarPorCpf(cpf);
-		
-		for(Seguro seguro : cliente.getSeguro()) {
-			veiculoRepository.deleteBySeguro(seguro);
-		}
 		clienteRepository.delete(cliente);
-		
+
 		return "Cliente excluído com sucesso";
 	}
 
@@ -186,5 +182,10 @@ public class ClienteServiceImpl implements ClienteService {
 		return "Contato atualizado com sucesso";
 	}
 
+	public String excluirContato(Long id) {
+
+		contatoClienteRepository.deleteById(id);
+		return "Contato excluído com sucesso";
+	}
 
 }

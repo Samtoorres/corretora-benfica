@@ -17,4 +17,5 @@ public interface ClienteService {
 	Cliente buscarPorCpf(String cpf);
 	List<ClienteRetornoCompletoDTO> buscarLista();
 	String atualizarContato(AtualizarContatoDTO atualizarContatoDTO);
+	String excluirContato(Long id);
 }

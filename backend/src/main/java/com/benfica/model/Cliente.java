@@ -37,7 +37,7 @@ public class Cliente {
 	@Column
 	private String cpf;
 	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente")
 	private List<ContatoCliente> contatoCliente;
 	
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)

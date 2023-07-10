@@ -1,4 +1,4 @@
-package com.benfica;
+package com.benfica.config;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;

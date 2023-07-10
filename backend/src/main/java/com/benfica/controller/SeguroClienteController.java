@@ -3,14 +3,11 @@ package com.benfica.controller;
 
 import java.util.List;
 
+import com.benfica.dto.AtualizarSeguroVeiculoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.benfica.dto.SeguroImovelDTO;
 import com.benfica.dto.SeguroVeiculoDTO;
@@ -80,4 +77,14 @@ public class SeguroClienteController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao cadastrar o seguro do imóvel do cliente");
 		}
 	}
+
+	@PutMapping("/veiculo/atualizar")
+	public ResponseEntity<?> atualizarSeguroVeiculo(@RequestBody AtualizarSeguroVeiculoDTO atualizarSeguroVeiculoDTO) {
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(veiculoServiceImpl.atualizar(atualizarSeguroVeiculoDTO));
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao atualizar os dados do seguro");
+		}
+	}
+
 }

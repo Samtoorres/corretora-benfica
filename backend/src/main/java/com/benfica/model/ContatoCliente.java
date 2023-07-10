@@ -34,6 +34,6 @@ public class ContatoCliente {
 	private String email;
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	private Cliente cliente;
 }

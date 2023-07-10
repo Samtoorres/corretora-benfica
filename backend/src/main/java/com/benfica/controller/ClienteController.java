@@ -105,4 +105,14 @@ public class ClienteController {
 		}
 	}
 
+	@DeleteMapping("excluir/contato/{id}")
+	public ResponseEntity<?> excluirContato(@PathVariable("id") Long id) {
+
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(clienteServiceImpl.excluirContato(id));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Não foi possível excluir do contato do cliente");
+		}
+	}
+
 }
