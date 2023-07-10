@@ -25,9 +25,8 @@ export class AtualizarClienteComponent implements OnInit {
 
   public atualizarCliente() {
     console.log(this.cliente)
-    this.clienteService.atualizarCliente(this.cliente).subscribe(val=>{
+    this.clienteService.atualizarCliente(this.cliente).subscribe(() =>{
       this.router.navigate(["/lista-usuario"]);
-    }); {
-    }
+    });
   }
 }

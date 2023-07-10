@@ -14,7 +14,7 @@ export class PopupContatoComponent {
   dados: any;
 
   constructor(public dialogRef: MatDialogRef<PopupContatoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private clienteService: ClienteService, private router: Router) {}
+    @Inject(MAT_DIALOG_DATA) public data: any, private router: Router, private clienteService: ClienteService) {}
 
   close(): void {
     this.dialogRef.close();
@@ -24,5 +24,16 @@ export class PopupContatoComponent {
     const objetoString = JSON.stringify(contato);
     this.router.navigate(['/atualizar-contato'], { queryParams: { objeto: objetoString } });
     this.close();
+  }
+
+  deletarContato(id: number) {
+  this.clienteService.deletarContato(id).subscribe(() =>{
+    this.router.navigate(["/lista-cliente"]).then(() => {
+      location.reload();
+    });
+
+    this.close();
+
+    });
   }
 }

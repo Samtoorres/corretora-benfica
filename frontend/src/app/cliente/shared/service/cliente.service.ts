@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Cliente } from '../entidade/cliente';
 import { Automovel } from '../entidade/automovel';
 import { Imovel } from '../entidade/imovel';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,12 @@ export class ClienteService {
 
   public atualizarContato(contatoCliente : ContatoCliente) {
     return this.http.put<any>("http://localhost:8080/cliente/atualizar/contato", contatoCliente);
+  }
+
+  public deletarContato(id: number) {
+    return this.http.delete("http://localhost:8080/cliente/excluir/contato/"+id, { responseType: 'text' })
+    .pipe(
+      map(response => response as string)
+    );
   }
 }

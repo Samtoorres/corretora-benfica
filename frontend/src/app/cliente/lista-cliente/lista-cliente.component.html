@@ -24,6 +24,12 @@
       <div *ngIf="cliente.contatoCliente.length == 1">
         <div *ngFor="let contato of cliente.contatoCliente">
           <div>Telefone Pessoal: {{ contato.telefonePessoal }}
+            <button mat-fab color="primary" (click)="atualizarContato(contato)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-fab color="primary" (click)="deletarContato(contato.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
           </div>
           <div>Email: {{ contato.email }}</div>
         </div>

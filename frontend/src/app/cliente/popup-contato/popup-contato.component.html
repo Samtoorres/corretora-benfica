@@ -5,6 +5,9 @@
       <button mat-fab color="primary" (click)="atualizarContato(contato)">
         <mat-icon>edit</mat-icon>
       </button>
+      <button mat-fab color="primary" (click)="deletarContato(contato.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
     <div>Email: {{ contato.email }}</div>
     <br>

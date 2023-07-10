@@ -1,15 +1,58 @@
-<button mat-button color="primary" [routerLink]="['/lista-cliente']" >Listar Clientes</button>
-<div>
-  <mat-form-field appearance="fill">
-    <mat-label>Nome</mat-label>
-    <input matInput type="text" [(ngModel)]="cliente.nome">
-  </mat-form-field>
+<button mat-button color="primary" class="listar" [routerLink]="['/lista-cliente']" >Listar Clientes</button>
+<div class="mat-card" fxLayout="column">
 
-  <mat-form-field appearance="fill">
-    <mat-label>CPF</mat-label>
-    <input matInput type="text" [(ngModel)]="cliente.cpf">
-  </mat-form-field>
+<mat-card class="dadosPessoais">
+  <h2>Dados Pessoais</h2>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" [(ngModel)]="cliente.nome">
+      </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput type="text" [(ngModel)]="cliente.cpf">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Telefone Pessoal</mat-label>
+        <input matInput type="text" [(ngModel)]="contatoCliente.telefonePessoal">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" [(ngModel)]="contatoCliente.email">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <h2>Endereço</h2>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Rua</mat-label>
+        <input matInput type="text" [(ngModel)]="cliente.endereco.rua">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Lote</mat-label>
+        <input matInput type="text" [(ngModel)]="cliente.endereco.lote">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CEP</mat-label>
+        <input matInput type="text" [(ngModel)]="cliente.endereco.cep">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <h2>Dados Seguro</h2>
+  <mat-card-content>
   <mat-form-field appearance="fill">
     <mat-label>Vigência Seguro</mat-label>
     <input matInput type="text" [(ngModel)]="seguro.vigencia">
@@ -20,38 +63,16 @@
     <input matInput type="text" [(ngModel)]="seguro.valor">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Telefone Pessoal</mat-label>
-    <input matInput type="text" [(ngModel)]="contatoCliente.telefonePessoal">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput type="text" [(ngModel)]="contatoCliente.email">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Rua</mat-label>
-    <input matInput type="text" [(ngModel)]="cliente.endereco.rua">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Lote</mat-label>
-    <input matInput type="text" [(ngModel)]="cliente.endereco.lote">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>CEP</mat-label>
-    <input matInput type="text" [(ngModel)]="cliente.endereco.cep">
-  </mat-form-field>
-
-  <mat-radio-group [(ngModel)]="cliente.tipoSeguro" (change)="mostrarDivCadastroSeguro(cliente.tipoSeguro)">
-    <mat-label>Tipo do Seguro</mat-label>
-    <mat-radio-button value="1">Automóvel</mat-radio-button>
-    <mat-radio-button value="2">Residencial</mat-radio-button>
-    <mat-radio-button value="3">Vida</mat-radio-button>
-  </mat-radio-group>
-
+  <div class="tipoSeguro">
+    <mat-radio-group [(ngModel)]="cliente.tipoSeguro" (change)="mostrarDivCadastroSeguro(cliente.tipoSeguro)">
+      <mat-label>Tipo do Seguro</mat-label>
+      <div>
+        <mat-radio-button value="1">Automóvel</mat-radio-button>
+        <mat-radio-button value="2">Residencial</mat-radio-button>
+        <mat-radio-button value="3">Vida</mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </div>
   <div *ngIf="mostrarDiv == 1">
     <mat-form-field appearance="fill">
       <mat-label>Placa</mat-label>
@@ -78,11 +99,15 @@
       <input matInput type="text" [(ngModel)]="automovel.valorVeiculo">
     </mat-form-field>
 
-    <mat-radio-group [(ngModel)]="automovel.idadeMenorVinteUm">
-      <mat-label>Maior Idade</mat-label>
-      <mat-radio-button value="true">Sim</mat-radio-button>
-      <mat-radio-button value="false">Não</mat-radio-button>
-    </mat-radio-group>
+    <div>
+      <mat-radio-group [(ngModel)]="automovel.idadeMenorVinteUm">
+        <div>
+          <mat-label>Maior Idade</mat-label>
+        </div>
+        <mat-radio-button value="true">Sim</mat-radio-button>
+        <mat-radio-button value="false">Não</mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
 
   <div *ngIf="mostrarDiv == 2">
@@ -105,7 +130,8 @@
   <div *ngIf="mostrarDiv == 3">
     <h1>Seguro Vida</h1>
   </div>
-
+</mat-card-content>
+</mat-card>
   <button mat-button color="primary" (click)="cadastrarCliente()" class="buttonCadastro">
     {{'Incluir Cliente'}}
   </button>

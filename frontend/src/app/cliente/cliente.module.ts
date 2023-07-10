@@ -16,6 +16,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PopupSeguroComponent } from './popup-seguro/popup-seguro.component';
 import { AtualizarClienteComponent } from './atualizar-cliente/atualizar-cliente.component';
 import { ContatoComponent } from './atualizar-cliente/contato/contato.component'
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [CadastrarClienteComponent, ListaClienteComponent, PopupContatoComponent, PopupSeguroComponent, AtualizarClienteComponent, ContatoComponent],
@@ -30,7 +32,9 @@ import { ContatoComponent } from './atualizar-cliente/contato/contato.component'
     MatTableModule,
     ClienteRoutingModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatCardModule
   ]
 })
 export class ClienteModule { }

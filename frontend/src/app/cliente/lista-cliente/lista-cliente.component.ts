@@ -24,7 +24,6 @@ export class ListaClienteComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
   }
 
   public listarClientes() {
@@ -79,6 +78,17 @@ export class ListaClienteComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Pop-up fechado', result);
+    });
+  }
+
+  atualizarContato(contato: ContatoCliente) {
+    const objetoString = JSON.stringify(contato);
+    this.router.navigate(['/atualizar-contato'], { queryParams: { objeto: objetoString } });
+  }
+
+  deletarContato(id: number) {
+    this.clienteService.deletarContato(id).subscribe(() =>{
+      this.listarClientes();
     });
   }
 }

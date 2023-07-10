@@ -14,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { MatTableModule } from '@angular/material/table';
 import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [CadastrarUsuarioComponent, ListaUsuarioComponent, AtualizarUsuarioComponent ],
@@ -29,7 +31,9 @@ import { AtualizarUsuarioComponent } from './atualizar-usuario/atualizar-usuario
     MatInputModule,
     MatIconModule,
     ToastrModule.forRoot(),
-    MatTableModule
+    MatTableModule,
+    MatGridListModule,
+    MatCardModule
   ]
 })
 export class UsuarioModule { }
