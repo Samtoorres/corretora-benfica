@@ -4,6 +4,8 @@ package com.benfica.controller;
 import java.util.List;
 
 import com.benfica.dto.AtualizarSeguroVeiculoDTO;
+import com.benfica.dto.SeguroVidaDTO;
+import com.benfica.service.impl.VidaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,9 @@ public class SeguroClienteController {
 	
 	@Autowired	
 	private ImovelServiceImpl imovelServiceImpl;
+
+	@Autowired
+	private VidaServiceImpl vidaServiceImpl;
 	
 	@PostMapping("/veiculo/{cpfCliente}")
 	public ResponseEntity<String> cadastrarSeguroVeiculo(@PathVariable("cpfCliente") String cpfCliente, @RequestBody SeguroVeiculoDTO seguroVeiculoDTO) {
@@ -87,4 +92,27 @@ public class SeguroClienteController {
 		}
 	}
 
+	@PostMapping("/vida/{cpfCliente}")
+	public ResponseEntity<String> cadastrarSeguroVida(@PathVariable("cpfCliente") String cpfCliente, @RequestBody SeguroVidaDTO seguroVidaDTO) {
+
+		try {
+			Cliente cliente = new Cliente();
+			Long idSeguro = null;
+			cliente = clienteServiceImpl.buscarPorCpf(cpfCliente);
+
+			List<Seguro> listaSeguros = cliente.getSeguro();
+
+			for(Seguro seguro : listaSeguros) {
+				if(seguro.getTipoSeguro().getId() == 3 && seguro.isAtivo() == true) {
+					idSeguro = seguro.getId();
+				}
+			}
+
+			String retorno = vidaServiceImpl.cadastrar(seguroVidaDTO, idSeguro);
+			return  new ResponseEntity<String>(retorno, HttpStatus.OK);
+
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha ao cadastrar o seguro do imóvel do cliente");
+		}
+	}
 }

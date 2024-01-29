@@ -38,6 +38,9 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired
 	private ImovelRepository imovelRepository;
+
+	@Autowired
+	private VidaRepository vidaRepository;
 	
 	@Override
 	public Cliente buscar(Long id) {
@@ -126,6 +129,7 @@ public class ClienteServiceImpl implements ClienteService {
 		List<Cliente> listaClientes = clienteRepository.findAll();
 		List<Veiculo> listaVeiculo = veiculoRepository.findAll();
 		List<Imovel> listaImovel = imovelRepository.findAll();
+		List<Vida> listaVida = vidaRepository.findAll();
 
 		List<ClienteRetornoCompletoDTO> listaClientesDadosCompletos = new ArrayList<>();
 
@@ -157,6 +161,15 @@ public class ClienteServiceImpl implements ClienteService {
 					for(Imovel imovel : listaImovel) {
 						if(imovel.getSeguro().getId() == seguro.getId()) {
 							objetosSeguros.add(imovel);
+							clienteRetornoCompletoDTO.setObjetoSeguro(objetosSeguros);
+						}
+					}
+				}
+
+				if(seguro.getTipoSeguro().getId() == 3) {
+					for(Vida vida : listaVida) {
+						if(vida.getSeguro().getId() == seguro.getId()) {
+							objetosSeguros.add(vida);
 							clienteRetornoCompletoDTO.setObjetoSeguro(objetosSeguros);
 						}
 					}
