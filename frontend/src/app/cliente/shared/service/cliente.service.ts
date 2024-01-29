@@ -5,6 +5,7 @@ import { Cliente } from '../entidade/cliente';
 import { Automovel } from '../entidade/automovel';
 import { Imovel } from '../entidade/imovel';
 import { map } from 'rxjs/operators';
+import { Vida } from '../entidade/vida';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class ClienteService {
 
   public cadastrarSeguroImovel(cpfCliente: string, seguroImovelDTO: Imovel) {
     return this.http.post<any>("http://localhost:8080/seguro/imovel/"+cpfCliente, seguroImovelDTO);
+  }
+
+  public cadastrarSeguroVida(cpfCliente: string, seguroVidaDTO: Vida) {
+    return this.http.post<any>("http://localhost:8080/seguro/vida/"+cpfCliente, seguroVidaDTO);
   }
 
   public listarClientes() {

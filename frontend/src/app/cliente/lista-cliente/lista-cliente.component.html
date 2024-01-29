@@ -24,10 +24,10 @@
       <div *ngIf="cliente.contatoCliente.length == 1">
         <div *ngFor="let contato of cliente.contatoCliente">
           <div>Telefone Pessoal: {{ contato.telefonePessoal }}
-            <button mat-fab color="primary" (click)="atualizarContato(contato)">
+            <button mat-fab color="primary" (click)="atualizarContato(contato)" class="buttonReduzido">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-fab color="primary" (click)="deletarContato(contato.id)">
+            <button mat-fab color="primary" (click)="deletarContato(contato.id)" class="buttonReduzido">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
@@ -36,7 +36,7 @@
       </div>
 
       <div *ngIf="cliente.contatoCliente.length > 1">
-        <button mat-fab color="primary" aria-placeholder="Visulizar" (click)="openPopupContato(cliente.contatoCliente, cliente.cpf)">
+        <button mat-fab color="primary" aria-placeholder="Visulizar" (click)="openPopupContato(cliente.contatoCliente, cliente.cpf)" class="buttonReduzido">
           <mat-icon>visibility</mat-icon>
         </button>
       </div>
@@ -56,7 +56,7 @@
   <ng-container matColumnDef="seguros">
     <th mat-header-cell *matHeaderCellDef> Seguros</th>
     <td mat-cell *matCellDef="let cliente">
-      <button mat-fab color="primary" aria-placeholder="Visulizar" (click)="openPopupSeguro(cliente.objetoSeguro, cliente.cpf)">
+      <button mat-fab color="primary" aria-placeholder="Visulizar" (click)="openPopupSeguro(cliente.objetoSeguro, cliente.cpf)" class="buttonReduzido">
         <mat-icon>visibility</mat-icon>
       </button>
     </td>
@@ -65,10 +65,10 @@
   <ng-container matColumnDef="acoes">
     <th mat-header-cell *matHeaderCellDef> Ações </th>
     <td mat-cell *matCellDef="let cliente">
-      <button class="buttonExc" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="excluirCliente(cliente)">
+      <button class="buttonExc" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="excluirCliente(cliente)" class="buttonReduzido">
         <mat-icon>delete</mat-icon>
       </button>
-      <button mat-fab color="primary" (click)="enviarObjeto(cliente)">
+      <button mat-fab color="primary" (click)="enviarObjeto(cliente)" class="buttonReduzido">
         <mat-icon>edit</mat-icon>
       </button>
     </td>

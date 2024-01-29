@@ -2,24 +2,59 @@
   text-align: center;
 }
 
-mat-card {
-  margin-left: 20em;
-  width: 60%;
-  margin-top: 3em;
-  margin-bottom: 3em;
-
+.dadosPessoais {
+  width: 90%;
+  display: flex;
+  margin: 2em;
 }
 
-mat-form-field {
-  margin: 10px;
+.dadosPessoais .left {
+  width: 50%;
+  margin-right: 2em;
+  margin-left: 6em;
+  float: left;
 }
+
+.dadosPessoais .right {
+  width: 50%;
+}
+
+.dadosPessoais mat-form-field {
+  width: 70%;
+}
+
+.right mat-card {
+  height: 100%;
+}
+
+.seguros {
+  width: 90%;
+}
+
+.seguros mat-card {
+  width: 100%;
+  margin-left: 6em;
+}
+
+.seguros mat-form-field {
+  width: 30%;
+}
+
+ mat-form-field {
+   margin: 10px;
+ }
 
 button {
   font-size: large;
-  background-color: rgb(247, 247, 247);
 }
 
 .listar {
   float: right;
+  margin-bottom: 2em;
   margin-right: 1em;
+}
+
+.buttonCadastro {
+  margin-top: 2em;
+  margin-bottom: 1em;
 }

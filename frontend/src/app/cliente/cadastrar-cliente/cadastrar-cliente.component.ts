@@ -5,6 +5,8 @@ import { ContatoCliente } from '../shared/entidade/contatoCliente';
 import { ClienteService } from '../shared/service/cliente.service';
 import { Automovel } from '../shared/entidade/automovel';
 import { Imovel } from '../shared/entidade/imovel';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Vida } from '../shared/entidade/vida';
 
 @Component({
   selector: 'app-cadastrar-cliente',
@@ -18,9 +20,10 @@ export class CadastrarClienteComponent implements OnInit {
   contatoCliente = new ContatoCliente();
   automovel = new Automovel();
   imovel = new Imovel()
+  vida = new Vida();
   mostrarDiv = 0;
 
-  constructor(private clienteService: ClienteService, private cdr: ChangeDetectorRef) { }
+  constructor(private clienteService: ClienteService, private cdr: ChangeDetectorRef, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,11 +36,21 @@ export class CadastrarClienteComponent implements OnInit {
       if(this.cliente.tipoSeguro == 1) {
         this.cadastrarSeguroAutomovel();
       }
+
       if(this.cliente.tipoSeguro == 2) {
         this.cadastrarSeguroImovel();
       }
 
+      if(this.cliente.tipoSeguro == 3) {
+        this.cadastrarSeguroVida();
+      }
+
       this.recarregarComponente();
+      alert("Cliente cadastrado com sucesso");
+      this.router.navigate(["/lista-cliente"]);
+    },
+    (error) => {
+      alert("Erro ao cadastrar o cliente");
     });
   }
 
@@ -47,6 +60,10 @@ export class CadastrarClienteComponent implements OnInit {
 
   public cadastrarSeguroImovel() {
     this.clienteService.cadastrarSeguroImovel(this.cliente.cpf, this.imovel).subscribe();
+  }
+
+  public cadastrarSeguroVida() {
+    this.clienteService.cadastrarSeguroVida(this.cliente.cpf, this.vida).subscribe();
   }
 
   public mostrarDivCadastroSeguro(a : number) {
@@ -59,7 +76,6 @@ export class CadastrarClienteComponent implements OnInit {
     if(a == 3) {
       this.mostrarDiv = 3;
     }
-    console.log(this.mostrarDiv)
   }
 
   recarregarComponente(): void {

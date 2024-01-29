@@ -24,6 +24,12 @@
         <div>Inscrição: {{ objetoSeguro.inscricao }}</div>
       </div>
 
+      <div *ngIf="objetoSeguro.seguro.tipoSeguro.id == 3">
+        <div>Tipo Seguro: {{ objetoSeguro.valorCobertura }}</div>
+        <div>Valor Imóvel: {{ objetoSeguro.assistenciaFuneral }}</div>
+        <div>Inscrição: {{ objetoSeguro.coberturaConjugeFilhos }}</div>
+      </div>
+
       <br>
   </div>
 </mat-dialog-content>

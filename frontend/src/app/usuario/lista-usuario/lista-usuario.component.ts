@@ -26,6 +26,7 @@ export class ListaUsuarioComponent implements OnInit {
 
   public excluirUsuario(usuario: Usuario) {
     this.usuarioService.excluirUsuario(usuario).subscribe(() => {
+      alert("Usuário excluído");
       location.reload();
     });
   }

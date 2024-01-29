@@ -24,6 +24,7 @@ export class AtualizarUsuarioComponent implements OnInit {
 
   public atualizarUsuario() {
     this.usuarioService.atualizarUsuario(this.usuario).subscribe(val=>{
+      alert("Usuário atualizado")
       this.router.navigate(["/lista-usuario"]);
     });
   }

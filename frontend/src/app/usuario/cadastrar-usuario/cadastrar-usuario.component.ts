@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../shared/entidade/usuario';
 import { UsuarioService } from '../shared/service/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -16,27 +17,18 @@ export class CadastrarUsuarioComponent implements OnInit {
   resposta = {};
   mensagemRetorno: string = "";
 
-  constructor(private usuarioService: UsuarioService, private toastr: ToastrService) { }
+  constructor(private usuarioService: UsuarioService, private toastr: ToastrService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   public cadastrarUsuario() {
-    this.usuarioService.cadastrarUsuario(this.usuario).subscribe();
-
-    console.log(this.resposta)
-
-    if(this.objetoVazio(this.resposta)) {
-      console.log(this.mensagemRetorno)
-    } else {
-      alert(this.mensagemRetorno);
-    }
-  }
-
-  public objetoVazio(obj: any) {
-    for (var prop in obj) {
-      if (obj.hasOwnProperty(prop)) return false;
-    }
-    return true;
+    this.usuarioService.cadastrarUsuario(this.usuario).subscribe((response) => {
+      alert('Usuário cadastrado com sucesso!');
+      this.router.navigate(["/lista-usuario"]);
+    },
+    (error) => {
+      alert('Erro ao cadastrar');
+    });
   }
 }
